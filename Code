@@ -1,0 +1,49 @@
+create database Company12
+	use Company
+
+create table Appartments23 (
+	Type int not null primary key,
+	code nvarchar(50) not null,
+	price nvarchar(10)
+)
+create table Banks22 (
+	id int not null primary key,
+	name nvarchar(50) not null,
+	country int not null,
+	score nvarchar(100)
+)
+	alter table Banks22
+	add constraint "Banks to payments" foreign key(id) references Payments22 (idbank)
+
+create table Payments22 (
+	id int not null primary key,
+	idtypepayments int not null,
+	sum money,
+	"Date" date not null,
+	idtenant int not null,
+	idbank int not null
+)
+create table Position22 (
+	id int not null primary key,
+	name nvarchar(50) not null,
+	description nvarchar(50) not null,
+)
+create table Tenants22 (
+	code int not null primary key,
+	"name" nchar(50) not null,
+	Email nchar(50) not null,
+	Street nchar(12) not null,
+)
+	alter table Tenants22
+	add constraint "Tenants to payments" foreign key(code) references Payments22(idtenant)
+create table Typeofpayments1 (
+id int not null primary key,
+nameofpayment nvarchar(50) not null,
+"description" nchar(12) not null
+)
+alter table Typeofpayments
+	add constraint "Type of payments to payments" foreign key(id) references Payments22(idtypepayments)
+create table Utilities22 (
+id int not null primary key,
+"Name description" nchar(50) not null,
+)
