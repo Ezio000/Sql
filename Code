@@ -1,12 +1,12 @@
-create database Company12
+create database Company
 	use Company
 
-create table Appartments23 (
+create table Appartments (
 	Type int not null primary key,
 	code nvarchar(50) not null,
 	price nvarchar(10)
 )
-create table Banks22 (
+create table Banks (
 	id int not null primary key,
 	name nvarchar(50) not null,
 	country int not null,
@@ -15,7 +15,7 @@ create table Banks22 (
 	alter table Banks22
 	add constraint "Banks to payments" foreign key(id) references Payments22 (idbank)
 
-create table Payments22 (
+create table Payments (
 	id int not null primary key,
 	idtypepayments int not null,
 	sum money,
@@ -23,26 +23,28 @@ create table Payments22 (
 	idtenant int not null,
 	idbank int not null
 )
-create table Position22 (
+alter table Payments
+	add constraint "Banks to payments" foreign key(idbank) references Banks (id)
+	alter table Payments
+	add constraint "Tenants to payments" foreign key(idtenant) references Tenants(code)
+	alter table Payments
+	add constraint "Type of payments to payments" foreign key(idtypepayments) references "Type of payments"(id)
+create table Position (
 	id int not null primary key,
 	name nvarchar(50) not null,
 	description nvarchar(50) not null,
 )
-create table Tenants22 (
+create table Tenants (
 	code int not null primary key,
 	"name" nchar(50) not null,
 	Email nchar(50) not null,
 	Street nchar(12) not null,
 )
-	alter table Tenants22
-	add constraint "Tenants to payments" foreign key(code) references Payments22(idtenant)
-create table Typeofpayments1 (
+create table "Type of payments" (
 id int not null primary key,
 nameofpayment nvarchar(50) not null,
-"description" nchar(12) not null
+"description" nchar(12) not null,
 )
-alter table Typeofpayments
-	add constraint "Type of payments to payments" foreign key(id) references Payments22(idtypepayments)
 create table Utilities22 (
 id int not null primary key,
 "Name description" nchar(50) not null,
