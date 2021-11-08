@@ -12,9 +12,6 @@ create table Banks (
 	country int not null,
 	score nvarchar(100)
 )
-	alter table Banks22
-	add constraint "Banks to payments" foreign key(id) references Payments22 (idbank)
-
 create table Payments (
 	id int not null primary key,
 	idtypepayments int not null,
