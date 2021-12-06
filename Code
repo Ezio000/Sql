@@ -42,7 +42,26 @@ id int not null primary key,
 nameofpayment nvarchar(50) not null,
 "description" nchar(12) not null,
 )
-create table Utilities22 (
+create table Utilities (
 id int not null primary key,
 "Name description" nchar(50) not null,
 )
+create table test (id int PRIMARY KEY, name varchar (MAX), otd int, salary money);
+insert into test values (1, 'Maria', 212, 15000),
+                        (2, 'Nazar', 456, 16000),
+						(3, 'Myroslav', 231, 15000),
+						(4, 'Oleg', 547, 17000),
+						(5, 'Ivan', 866, 18000),
+						(6, 'Olena', 976, 16000),
+						(7, 'Igor', 158, 17000),
+						(8, 'Andriy', 051, 18000),
+						(9, 'Sergiy', 432, 15000),
+						(10, 'Uliana', 654, 16000);
+Select * From test
+Update test set salary = 15000
+Select * From test
+Delete from test where salary = 15000
+Select Name, salary
+From test
+Order by otd Desc
+
